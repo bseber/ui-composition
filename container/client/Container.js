@@ -14,19 +14,19 @@ class Container extends Component {
 
     render() {
         const active = this.state.active;
-        const activeSubscription = this.props.subscriptions.find(s => s.id === active) || { renderView: () => null };
-        return React.createElement(
-            'div',
-            null,
-            [
-                React.createElement('h2', null, 'container element'),
-                React.createElement('h3', null, 'tabs'),
-                React.createElement('div', null, this.props.subscriptions.map(s =>
-                    React.createElement('button', { key: s.id, onClick: event => this.handleTabClick(s.id) }, s.renderTab())
-                )),
-                React.createElement('h3', null, 'content'),
-                React.createElement('div', null, activeSubscription.renderView()),
-            ]
+        const activeSubscription = this.props.subscriptions.find(s => s.id === active);
+        return (
+            <div>
+                <h2>container element</h2>
+                <h3>tabs</h3>
+                {this.props.subscriptions.map(s =>
+                    <button key={s.id} onClick={event => this.handleTabClick(s.id)}>{s.renderTab()}</button>)
+                }
+                <h3>content</h3>
+                <div>
+                    {activeSubscription && activeSubscription.renderView()}
+                </div>
+            </div>
         );
     }
 }

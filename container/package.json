@@ -13,6 +13,9 @@
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
     "nodemon": "^1.14.12",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -22,5 +25,11 @@
     "child1": "file:../child1",
     "child2": "file:../child2",
     "express": "^4.16.2"
+  },
+  "babel": {
+    "presets": [
+      "react",
+      "env"
+    ]
   }
 }

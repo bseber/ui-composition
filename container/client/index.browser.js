@@ -1,13 +1,6 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
-
-const Container = require('./Container');
-require('child1');
-require('child2');
-
-function View() {
-    return React.createElement(Container, { subscriptions: global.subscriptions })
-}
+const View = require('./index.server');
 
 View.hydrate = function(selector) {
     document.addEventListener('DOMContentLoaded', function() {

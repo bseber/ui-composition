@@ -4,7 +4,7 @@ const ReactDOMServer = require('react-dom/server');
 const express = require('express');
 const app = express();
 
-const View = require('../client/index');
+const View = require('../dist/server.bundle.js');
 
 app.get('/render', (req, res) => {
     res.send(
