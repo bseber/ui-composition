@@ -14,6 +14,13 @@ class Container extends Component {
         window.addEventListener('popstate', event => {
             this.setState({ active: event.state ? event.state.active : null });
         });
+
+        for (const s of this.props.subscriptions) {
+            if (s.id !== this.state.active) {
+                const query = {};
+                s.fetchData(query).then(result => this.updateProviderResultData(s.id, result));
+            }
+        }
     }
 
     handleTabClick(id) {
@@ -22,17 +29,18 @@ class Container extends Component {
     }
 
     handleSearch(query) {
-        const updateState = (id, data) => {
-            this.setState({
-                data: {
-                    ...this.state.data,
-                    [id]: data,
-                },
-            });
-        };
         for(const s of this.props.subscriptions) {
-            s.fetchData(query).then(result => updateState(s.id, result));
+            s.fetchData(query).then(result => this.updateProviderResultData(s.id, result));
         }
+    }
+
+    updateProviderResultData(id, result) {
+        this.setState({
+            data: {
+                ...this.state.data,
+                [id]: result,
+            },
+        });
     }
 
     render() {
