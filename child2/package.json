@@ -1,0 +1,16 @@
+{
+  "name": "child2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "client/index.js",
+  "scripts": {
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "api": "file:../api",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  }
+}
