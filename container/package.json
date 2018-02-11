@@ -24,7 +24,8 @@
   "dependencies": {
     "child1": "file:../child1",
     "child2": "file:../child2",
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "query-string": "^5.1.0"
   },
   "babel": {
     "presets": [

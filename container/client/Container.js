@@ -5,14 +5,13 @@ class Container extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            active: 'child1'
+            active: props.active,
         };
     }
 
     componentDidMount() {
         window.addEventListener('popstate', event => {
-            // TODO default value?
-            this.setState({ active: event.state.active });
+            this.setState({ active: event.state ? event.state.active : null });
         });
     }
 
@@ -23,12 +22,13 @@ class Container extends Component {
 
     render() {
         const active = this.state.active;
-        const activeSubscription = this.props.subscriptions.find(s => s.id === active);
+        const subscriptions = this.props.subscriptions;
+        const activeSubscription = subscriptions.find(s => s.id === active) || subscriptions[0];
         return (
             <div>
                 <h2>container element</h2>
                 <h3>tabs</h3>
-                {this.props.subscriptions.map(s =>
+                {subscriptions.map(s =>
                     <button key={s.id} onClick={event => this.handleTabClick(s.id)}>{s.renderTab()}</button>)
                 }
                 <h3>content</h3>

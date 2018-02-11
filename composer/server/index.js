@@ -3,7 +3,7 @@ const axios = require('axios');
 const app = express();
 
 app.get('/', (req, res) => {
-    axios.get('http://localhost:3010/render').then(response => {
+    axios.get('http://localhost:3010/render' + req.originalUrl).then(response => {
         const html = render(response.data);
         res.send(html);
     });

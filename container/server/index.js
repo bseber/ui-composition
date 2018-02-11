@@ -7,9 +7,10 @@ const app = express();
 const View = require('../dist/server.bundle.js');
 
 app.get('/render', (req, res) => {
+    const active = req.query.active;
     res.send(
         ReactDOMServer.renderToString(
-            React.createElement(View)
+            React.createElement(View, { active })
         )
     );
 });
