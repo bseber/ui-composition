@@ -4,7 +4,7 @@ const { Component } = React;
 module.exports = class Tab extends Component {
     render() {
         return React.createElement(
-            'div',
+            'span',
             null,
             'child2 tab'
         );

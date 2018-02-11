@@ -4,19 +4,23 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon server/index.js"
+    "dev": "npm run build:watch & npm run serve",
+    "serve": "nodemon server/index.js",
+    "build:watch": "webpack -w"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "nodemon": "^1.14.12"
+    "babel-core": "^6.26.0",
+    "nodemon": "^1.14.12",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "webpack": "^3.11.0"
   },
   "dependencies": {
     "child1": "file:../child1",
     "child2": "file:../child2",
-    "express": "^4.16.2",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "express": "^4.16.2"
   }
 }
