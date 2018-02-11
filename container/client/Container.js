@@ -8,7 +8,16 @@ class Container extends Component {
             active: 'child1'
         };
     }
+
+    componentDidMount() {
+        window.addEventListener('popstate', event => {
+            // TODO default value?
+            this.setState({ active: event.state.active });
+        });
+    }
+
     handleTabClick(id) {
+        window.history.pushState({ active: id }, null, "?active=" + id);
         this.setState({ active: id });
     }
 
