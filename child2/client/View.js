@@ -7,8 +7,8 @@ module.exports = class Child1View extends Component {
             'div',
             null,
             [
-                React.createElement('h3', null, 'child 2 view'),
-                React.createElement('div', null, 'no items :/')
+                React.createElement('h3', { key: 'title' }, 'child 2 view'),
+                React.createElement('div', { key: 'content' }, 'no items :/')
             ]
         );
     }

@@ -11,7 +11,7 @@ module.exports = class Child1View extends Component {
             'div',
             null,
             [
-                React.createElement('h3', null, 'child 1 view'),
+                React.createElement('h3', { key: 'title' }, 'child 1 view'),
                 items.map(item => React.createElement(
                     'div', { key: item.id, style: { backgroundColor: 'purple' } }, item.name
                 ))
