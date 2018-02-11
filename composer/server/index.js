@@ -31,10 +31,7 @@ function render(container) {
 <div id="root">${container}</div>
 
 <script>
-  ReactDOM.render(
-      React.createElement(window.myNamespace.components.container),
-      document.getElementById('root')
-  );
+    window.myNamespace.components.container.hydrate('#root');
 </script>
 </body>
 </html>`
