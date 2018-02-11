@@ -1,18 +1,13 @@
 const path = require('path');
-const React = require('react');
-const ReactDOMServer = require('react-dom/server');
 const express = require('express');
 const app = express();
 
-const View = require('../dist/server.bundle.js');
+const init = require('../dist/server.bundle.js').default;
 
 app.get('/render', (req, res) => {
-    const active = req.query.active;
-    res.send(
-        ReactDOMServer.renderToString(
-            React.createElement(View, { active })
-        )
-    );
+    init(req).then(data => {
+        res.json(data);
+    });
 });
 
 app.get('/container.bundle.js', (req, res) => {

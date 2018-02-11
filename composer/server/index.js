@@ -13,7 +13,7 @@ app.listen(8080, () => console.log('app listening on http://localhost:8080'));
 
 
 
-function render(container) {
+function render({ html, initialState }) {
     return `
 <!DOCTYPE html>
 <html lang="en">
@@ -28,10 +28,10 @@ function render(container) {
 </head>
 <body>
 
-<div id="root">${container}</div>
+<div id="root">${html}</div>
 
 <script>
-    window.myNamespace.components.container.hydrate('#root');
+    window.myNamespace.components.container.hydrate('#root', ${JSON.stringify(initialState)});
 </script>
 </body>
 </html>`

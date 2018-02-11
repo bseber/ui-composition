@@ -1,11 +1,11 @@
-const React = require('react');
-const { Component } = React;
+import React, { Component } from 'react';
 
 class Container extends Component {
     constructor(props) {
         super(props);
         this.state = {
             active: props.active,
+            data: props.data || {},
         };
     }
 
@@ -21,7 +21,7 @@ class Container extends Component {
     }
 
     render() {
-        const active = this.state.active;
+        const { active, data } = this.state;
         const subscriptions = this.props.subscriptions;
         const activeSubscription = subscriptions.find(s => s.id === active) || subscriptions[0];
         return (
@@ -29,11 +29,11 @@ class Container extends Component {
                 <h2>container element</h2>
                 <h3>tabs</h3>
                 {subscriptions.map(s =>
-                    <button key={s.id} onClick={event => this.handleTabClick(s.id)}>{s.renderTab()}</button>)
+                    <button key={s.id} onClick={event => this.handleTabClick(s.id)}>{s.renderTab(data[s.id])}</button>)
                 }
                 <h3>content</h3>
                 <div>
-                    {activeSubscription && activeSubscription.renderView()}
+                    {activeSubscription && activeSubscription.renderView(data[activeSubscription.id])}
                 </div>
             </div>
         );

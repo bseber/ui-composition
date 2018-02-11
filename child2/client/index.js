@@ -1,10 +1,12 @@
 const { subscribe } = require('api');
 const View = require('./View');
 const Tab = require('./Tab');
+const fetchData = require('./dataProvider');
 const React = require('react');
 
 subscribe({
     id: 'child2',
-    renderView: () => React.createElement(View),
-    renderTab: () => React.createElement(Tab),
+    renderView: (props) => React.createElement(View, props),
+    renderTab: (props) => React.createElement(Tab, props),
+    fetchData: (query) => fetchData(query),
 });
