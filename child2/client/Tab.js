@@ -6,7 +6,7 @@ module.exports = class Tab extends Component {
         return React.createElement(
             'span',
             null,
-            'child2 tab'
+            `child2 tab (${this.props.data ? this.props.data.length : 0})`
         );
     }
 };
