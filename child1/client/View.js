@@ -8,7 +8,7 @@ module.exports = class Child1View extends Component {
             null,
             [
                 React.createElement('h3', { key: 'title' }, 'child 1 view'),
-                this.props.data.map(item => React.createElement(
+                this.props.myItems.map(item => React.createElement(
                     'div', { key: item.id, style: { backgroundColor: 'purple' } }, item.name
                 ))
             ]
