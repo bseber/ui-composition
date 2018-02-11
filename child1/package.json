@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "client/index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "keywords": [],
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "api": "file:../api",
+    "api": "file:../api"
+  },
+  "devDependencies": {
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   }

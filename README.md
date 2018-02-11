@@ -17,15 +17,14 @@ to scale with multiple teams in a microservice landscape ¯\_(ツ)_/¯
 
 git clone https://github.com/bseber/ui-composition.git
 cd ui-composing
+./setup.sh
 
 // container
 cd container
-npm i
 npm run dev
 
 // composer
 cd composer
-npm i
 npm run dev
 
 -> http://localhost:8080
