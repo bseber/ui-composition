@@ -16,7 +16,7 @@ to scale with multiple teams in a microservice landscape ¯\_(ツ)_/¯
 // install node8
 
 git clone https://github.com/bseber/ui-composition.git
-cd ui-composing
+cd ui-composition
 ./setup.sh
 
 // container
@@ -101,7 +101,7 @@ subscribe({
 * the central unit which receives the browser request and returns the final html document
 * composes all containers
 * includes all scripts
-* may or may not fetches initial data and does server side rendering (client does it anyway due to script import)
+* may or may not fetch initial data and does server side rendering (client does it anyway due to script import)
 
 
 
