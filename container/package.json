@@ -23,6 +23,7 @@
     "webpack": "^3.11.0"
   },
   "dependencies": {
+    "api": "file:../api",
     "child1": "file:../child1",
     "child2": "file:../child2",
     "express": "^4.16.2",
