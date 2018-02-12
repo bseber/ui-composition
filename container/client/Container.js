@@ -11,16 +11,25 @@ class Container extends Component {
     }
 
     componentDidMount() {
-        window.addEventListener('popstate', event => {
-            this.setState({ active: event.state ? event.state.active : null });
-        });
-
         for (const s of this.props.subscriptions) {
             if (s.id !== this.state.active) {
                 const query = {};
                 s.fetchData(query).then(result => this.updateProviderResultData(s.id, result));
             }
         }
+
+        const handlePopstate = event => {
+            this.setState({ active: event.state ? event.state.active : null });
+        };
+        window.addEventListener('popstate', handlePopstate);
+
+        this.cleanupListeners = () => {
+            window.removeListener('popstate', handlePopstate);
+        };
+    }
+
+    componentWillUnmount() {
+        this.cleanupListeners();
     }
 
     handleTabClick(id) {
