@@ -12,7 +12,7 @@ View.hydrate = function(selector, initialState) {
             subscriptions: global.subscriptions,
         };
         ReactDOM.hydrate(
-            React.createElement(window.myNamespace.components.container, props),
+            React.createElement(View, props),
             document.querySelector(selector)
         );
     })
