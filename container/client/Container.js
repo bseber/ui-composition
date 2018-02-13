@@ -55,7 +55,7 @@ export default class Container extends Component {
     render() {
         const { active, data } = this.state;
         const subscriptions = this.props.subscriptions;
-        const activeSubscription = subscriptions.find(s => s.id === active) || subscriptions[0];
+        const activeSubscription = subscriptions.find(s => s.id === active);
 
         const renderResult = () => {
             const viewProps = data[activeSubscription.id];
