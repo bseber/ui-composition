@@ -20,17 +20,15 @@ function render({ html, initialState }) {
 <head>
     <meta charset="UTF-8">
     <title>ui composing</title>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.2.0/umd/react.development.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.2.0/umd/react-dom.development.js"></script>
-    
-    <script src="http://localhost:3010/container.bundle.js"></script>
-    <script src="http://localhost:3011/child3-dynamic.bundle.js"></script>
 </head>
 <body>
 
 <div id="root">${html}</div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.2.0/umd/react.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.2.0/umd/react-dom.development.js"></script>
+<script src="http://localhost:3010/container.bundle.js"></script>
+<script src="http://localhost:3011/child3-dynamic.bundle.js"></script>
 <script>
     window.myNamespace.components.container.hydrate('#root', ${JSON.stringify(initialState)});
 </script>
