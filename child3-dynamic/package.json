@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "npm run build:watch & npm run serve",
     "serve": "nodemon server/index.js",
+    "build": "NODE_ENV=production webpack",
     "build:watch": "webpack -w"
   },
   "keywords": [],
@@ -23,6 +24,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "nodemon": "^1.14.12",
+    "uglifyjs-webpack-plugin": "^1.1.8",
     "webpack": "^3.11.0"
   },
   "babel": {

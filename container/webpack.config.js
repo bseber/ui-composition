@@ -1,3 +1,13 @@
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+
+const env = process.env.NODE_ENV || 'development';
+const isProd = env === 'production';
+
+const plugins = [
+    isProd && new UglifyJsPlugin({
+        cache: true,
+    }),
+].filter(Boolean);
 
 module.exports = [
     // bundle used by the server (SSR)
@@ -12,6 +22,7 @@ module.exports = [
                 { test: /\.js$/, use: 'babel-loader' }
             ]
         },
+        plugins
     },
     // bundle used by the browser
     {
@@ -26,6 +37,7 @@ module.exports = [
                 { test: /\.js$/, use: 'babel-loader' }
             ]
         },
+        plugins,
         externals: {
             'react': 'React',
             'react-dom': 'ReactDOM',
