@@ -25,6 +25,7 @@ function render({ html, initialState }) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.2.0/umd/react-dom.development.js"></script>
     
     <script src="http://localhost:3010/container.bundle.js"></script>
+    <script src="http://localhost:3011/child3-dynamic.bundle.js"></script>
 </head>
 <body>
 
@@ -33,6 +34,7 @@ function render({ html, initialState }) {
 <script>
     window.myNamespace.components.container.hydrate('#root', ${JSON.stringify(initialState)});
 </script>
+
 </body>
 </html>`
 }
