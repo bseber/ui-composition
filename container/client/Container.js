@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Search from './Search'
 
-class Container extends Component {
+export default class Container extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -82,5 +82,3 @@ class Container extends Component {
 Container.defaultProps = {
     subscriptions: [],
 };
-
-module.exports = Container;

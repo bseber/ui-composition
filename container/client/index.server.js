@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { getSubscriptions } from 'api';
 
-const Container = require('./Container');
-require('child1');
-require('child2');
+import Container from './Container';
+import 'child1';
+import 'child2';
 
 export default function init(request) {
     return new Promise((done, ouch) => {
