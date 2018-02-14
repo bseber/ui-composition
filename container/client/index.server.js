@@ -8,18 +8,18 @@ import 'child2';
 
 export default function init(request) {
     return new Promise((done, ouch) => {
-        const { active } = request.query;
+        const { active, query } = request.query;
         const subscriptions = getSubscriptions();
         const provider = subscriptions.find(s => s.id === active);
 
         if (provider) {
-            const params = {}; // TODO SSR params for data fetching
-            provider.fetchData(params)
+            provider.fetchData({ query })
                 .then(data => {
                     // subscriptions contains functions to render components
                     // which cannot or should not be serialized in the initialState
                     // subscription is executed in the browser again
                     const initialState = {
+                        query,
                         active: provider.id,
                         data: { [provider.id]: data },
                     };
@@ -35,7 +35,7 @@ export default function init(request) {
                 })
                 .catch(error => ouch(error))
         } else {
-            const initialState = { active: null, data: {} };
+            const initialState = { active: null, query: query, data: {} };
             const html = render({ ...initialState, subscriptions });
             done({ html, initialState });
         }

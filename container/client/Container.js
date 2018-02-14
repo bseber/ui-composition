@@ -7,14 +7,15 @@ export default class Container extends Component {
         this.state = {
             active: props.active,
             data: props.data || {},
+            query: props.query,
         };
     }
 
     componentDidMount() {
         for (const s of this.props.subscriptions) {
             if (s.id !== this.state.active) {
-                const query = {};
-                s.fetchData(query).then(result => this.updateProviderResultData(s.id, result));
+                const params = { query: this.state.query };
+                s.fetchData(params).then(result => this.updateProviderResultData(s.id, result));
             }
         }
 
@@ -29,9 +30,10 @@ export default class Container extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (prevState.active !== this.state.active) {
-            const { active } = this.state;
-            window.history.pushState({ active }, null, "?active=" + id);
+        if (prevState.active !== this.state.active || prevState.query !== this.state.query) {
+            const { active, query } = this.state;
+            const pathname = `?active=${active}&query=${query}`;
+            window.history.pushState({ active, query }, null, pathname);
         }
     }
 
@@ -43,9 +45,10 @@ export default class Container extends Component {
         this.setState({ active: id });
     }
 
-    handleSearch(query) {
+    handleSearch({ query }) {
+        this.setState({ query });
         for(const s of this.props.subscriptions) {
-            s.fetchData(query).then(result => this.updateProviderResultData(s.id, result));
+            s.fetchData({ query }).then(result => this.updateProviderResultData(s.id, result));
         }
     }
 
@@ -87,4 +90,5 @@ export default class Container extends Component {
 
 Container.defaultProps = {
     subscriptions: [],
+    query: '',
 };
