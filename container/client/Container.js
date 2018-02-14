@@ -65,7 +65,7 @@ export default class Container extends Component {
     }
 
     render() {
-        const { active, data } = this.state;
+        const { active, data, query } = this.state;
         const subscriptions = this.props.subscriptions;
         const activeSubscription = subscriptions.find(s => s.id === active);
 
@@ -77,7 +77,7 @@ export default class Container extends Component {
         return (
             <div>
                 <h2>container element</h2>
-                <Search onSubmit={data => this.handleSearch(data)} />
+                <Search onSubmit={data => this.handleSearch(data)} value={query} />
                 <h3>tabs</h3>
                 {subscriptions.map(s =>
                     <button key={s.id} onClick={event => this.handleTabClick(s.id)}>{s.renderTab(data[s.id])}</button>)
