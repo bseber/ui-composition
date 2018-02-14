@@ -20,7 +20,10 @@ export default class Container extends Component {
         }
 
         const handlePopstate = event => {
-            this.setState({ active: event.state ? event.state.active : null });
+            this.setState({
+                active: event.state ? event.state.active : null,
+                query: event.state ? event.state.query : '',
+            });
         };
         window.addEventListener('popstate', handlePopstate);
 
