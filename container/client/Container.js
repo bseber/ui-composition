@@ -28,12 +28,18 @@ export default class Container extends Component {
         };
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.active !== this.state.active) {
+            const { active } = this.state;
+            window.history.pushState({ active }, null, "?active=" + id);
+        }
+    }
+
     componentWillUnmount() {
         this.cleanupListeners();
     }
 
     handleTabClick(id) {
-        window.history.pushState({ active: id }, null, "?active=" + id);
         this.setState({ active: id });
     }
 
